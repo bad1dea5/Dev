@@ -1,0 +1,46 @@
+title: BAD1DEA5
+email: bad1ddea5@dev.lan
+description: A centralized deposit of assorted bytes.
+
+url: "https://bad1dea5.github.io"
+timezone: UTC
+
+baseurl: ""
+source: .
+
+plugins:
+  - jekyll-feed
+
+collections_dir: archive
+collections:
+  assembly:
+    output: true
+    permalink: /:collection/:path
+  documents:
+    output: true
+    permalink: /:collection/:path
+
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+
+markdown: kramdown
+
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+sass:
+  style: compressed
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - Makefile
+
+port: 5001

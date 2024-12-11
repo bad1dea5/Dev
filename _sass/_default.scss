@@ -1,0 +1,70 @@
+@import "colours";
+@import "pygments";
+
+a {
+    color: $red;
+    text-decoration: none;
+
+    &:hover {
+        color: $salmon;
+    }
+}
+
+pre {
+    background-color: hsl(258, 100%, 97%);
+    display: inline flow-root list-item;
+    font-size: .85rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding: .3750rem .5rem;
+    min-width: 65%;
+}
+
+header {
+    .navbar {
+        &-brand,
+        &-text,
+        &-nav .nav-link {
+            color: $white;
+            transition: all .2s ease 0s;
+
+            &:hover {
+                color: $red;
+            }
+
+            & i { font-size: 1.25rem;}
+        }
+    }
+}
+
+.sidebar {
+    & .nav-link {
+        font-size: .875rem;
+        font-weight: 500;
+        color: $red;
+        padding: .2rem .7rem;
+        margin: .15rem;
+        border-radius: .375rem;
+
+        &:hover {
+            background-color: $red;
+            color: $white;
+        }
+
+        i {
+            font-size: 1rem;
+        }
+    }
+
+    .sidebar-heading {
+        font-size: .75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar .offcanvas-lg {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px;
+    }
+}
