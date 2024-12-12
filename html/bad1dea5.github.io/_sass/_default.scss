@@ -20,6 +20,12 @@ pre {
     min-width: 65%;
 }
 
+blockquote {
+    border-left: solid hsl(0, 0%, 75%);;
+    background-color: hsl(258, 100%, 97%);
+    padding: .25rem .75rem .01rem .75rem;
+}
+
 header {
     .navbar {
         &-brand,

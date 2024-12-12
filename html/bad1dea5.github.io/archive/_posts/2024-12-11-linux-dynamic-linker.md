@@ -13,17 +13,18 @@ categories: linux linker
 ### _DYNAMIC
 {: .pt-4 .border-bottom }
 
-> The `.dynamic` section contains a series of structures that hold relevant dynamic linking information.
-> The `d_tag` member controls the interpretation of `d_un`.
+If an object file participates in dynamic linking, its program header table will have an element of type `PT_DYNAMIC`. 
+This segment contains the .dynamic section. A special symbol, `_DYNAMIC`, labels the section, 
+which contains an array of the following structure. The `d_tag` member controls the interpretation of `d_un`.
 
 {% highlight c %}
 typedef struct
 {
-  Elf64_Sxwordd_tag;  // uint64_t
+  Elf64_Xword  d_tag;   // uint64_t
   union
   {
-    Elf64_Xwordd_val; // uint64_t
-    Elf64_Addrd_ptr;  // uint64_t
+    Elf64_Xword d_val;  // uint64_t
+    Elf64_Addr  d_ptr;  // uint64_t
   } d_un;
 }
 Elf64_Dyn;
@@ -57,7 +58,7 @@ Dynamic section at offset 0xe80 contains 17 entries:
  0x0000000000000000 (NULL)               0x0
 {% endhighlight %}
 
-{% highlight c %}
+{% highlight cpp %}
 // load address: 0xf4000
 // dynamic offset: 0xe80
 
@@ -105,9 +106,9 @@ struct r_debug
     /* This state value describes the mapping change taking place when
     the `r_brk' address is called.  */
     
-    RT_CONSISTENT,		/* Mapping change is complete.  */
-    RT_ADD,			/* Beginning to add a new object.  */
-    RT_DELETE		/* Beginning to remove an object mapping.  */
+    RT_CONSISTENT,  /* Mapping change is complete.  */
+    RT_ADD,         /* Beginning to add a new object.  */
+    RT_DELETE       /* Beginning to remove an object mapping.  */
   } r_state;
 
   Elf64_Addr r_ldbase;	/* Base address the linker is loaded at.  */
@@ -176,7 +177,7 @@ void* handle = map->l_addr;
 
 Now that we have the handle, we can start getting headers, sections and symbols.
 
-{% highlight c %}
+{% highlight cpp %}
 Elf64_Ehdr* ehdr = reinterpret_cast<Elf64_Ehdr*>(handle);
 Elf64_Phdr* phdr = reinterpret_cast<Elf64_Phdr*>(handle + ehdr->e_phoff);
 Elf64_Shdr* shdr = reinterpret_cast<Elf64_Shdr*>(handle + ehdr->e_shoff);
