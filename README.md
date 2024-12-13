@@ -18,6 +18,7 @@ A centralized deposit of assorted bytes.
 			- [strlen](asm/x86_64/libc/linux/strlen.s)
 - ***CPP***
 	1. [Program](cpp/linux/program/)
+	2. [Dynamic_linker](cpp/linux/archive/dynamic_linker/)
 
 #### Windows
 - ***ASM***
