@@ -1,0 +1,23 @@
+[workspace]
+resolver = "2"
+members = [
+    "lib",
+    "src/launcher"
+]
+
+[profile.dev]
+debug = true
+panic = "abort"
+opt-level = 0
+incremental = true
+lto = false
+debug-assertions = true
+
+[profile.release]
+debug = false
+panic = "abort"
+opt-level = 3
+incremental = false
+lto = true
+codegen-units = 1
+strip = true
