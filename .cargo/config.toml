@@ -1,0 +1,11 @@
+[target.'cfg(unix)']
+rustflags = [
+    "-Clink-arg=-nostdlib",
+    "-Clink-arg=-lc",
+]
+
+[target.'cfg(windows)']
+rustflags = [
+    "-C", "link-arg=/NODEFAULTLIB",
+    "-C", "link-arg=/SUBSYSTEM:WINDOWS",
+]
