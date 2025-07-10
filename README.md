@@ -12,7 +12,8 @@ A centralized deposit of assorted bytes.
 			- [strlen](asm/aarch64/libc/linux/strlen.s)
 	- **x86_64**
 		1. [Program](asm/x86_64/linux/program/)
-		2. **libc**
+  		2. [Dynamic](asm/x86_64/linux/dynamic)
+		3. **libc**
 			- [crc64](asm/x86_64/libc/linux/crc64.s)
 			- [memset](asm/x86_64/libc/linux/memset.s)
 			- [strlen](asm/x86_64/libc/linux/strlen.s)
